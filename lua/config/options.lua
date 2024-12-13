@@ -1,4 +1,4 @@
--- [[ Setting options ]]
+-- [[ Setting options ]]op
 -- See `:help vim.opt`
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
@@ -65,4 +65,5 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 
 vim.cmd.colorscheme 'tokyonight-storm'
+
 -- vim: ts=2 sts=2 sw=2 et

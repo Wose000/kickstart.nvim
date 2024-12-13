@@ -170,6 +170,9 @@ return {
         clangd = {},
         bashls = {},
         pyright = {},
+        intelephense = {
+          capabilities = require('cmp_nvim_lsp').default_capabilities(),
+        },
         html = {},
         cssls = {},
         kotlin_language_server = {},
