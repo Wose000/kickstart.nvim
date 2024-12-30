@@ -33,25 +33,26 @@ return {
     priority = 1000,
     init = function()
       local shade = require 'nightfox.lib.shade'
-      local red = shade.new('#9044bd', '#b173cc', '#986FCC')
-      local magenta = shade.new('#7d79d8', '#9490f2', '#5659be', '#9d7cd8')
-      local pink = shade.new('#e754de', '#fa6bd7', '#ec5fff', '#bb9af7')
-      local green = shade.new('#69bf7a', '#a9ec98', '#32a46f', '#b2ebbd')
-      local cyan = shade.new('#4fd6be', '#41a6b5', '#07b6aa', '#b4f9f8')
-
-      local yellow = shade.new('#ff9e64', '#FF9a3a', '#ff757f', '#ffc777')
-      local blue = shade.new('#2871bc', '#4581c3', '#7dcfff', '#94bbe7')
+      local red = shade.new('#e358ff', '#e766f8', '#c849eb', '#eb78f3')
+      local magenta = shade.new('#a347ff', '#b058f7', '#b83ce9', '#bc6af3')
+      local green = shade.new('#1fff75', '#3ff57f', '#21d6a0', '#57ef87')
+      local cyan = shade.new('#23eae0', '#3fe7dc', '#2871bc', '#57e6dc')
+      local purp = shade.new('#8578ff', '#9c89f9', '#9566ee', '#ab96f5')
+      local turq = shade.new('#01ffc4', '#25f4c0', '#16c6a6', '#42edc0')
+      local lightgreen = shade.new('#9dff82', '#acfa9f', '#84e870', '#b7f7a7')
+      local blue = shade.new('#36abff', '#55b0f6', '#3095e8', '#6cb3f1')
+      local yellow = shade.new('#f5ff9b', '#f8fba3', '#e1ec83', '#f9f8a9')
       local palettes = {
         duskfox = {
-          black = '#473e59',
+          black = turq,
           red = red,
           green = green,
           yellow = yellow,
           cyan = cyan,
           magenta = magenta,
           blue = blue,
-          white = '#2871bc',
-          pink = pink,
+          white = lightgreen,
+          pink = purp,
           bg1 = '#0e111d',
         },
       }

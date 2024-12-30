@@ -3,7 +3,7 @@
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 
--- Make line numbers default
+-- Make line numbers defaultopt
 vim.opt.number = true
 vim.opt.relativenumber = true
 
@@ -64,6 +64,7 @@ vim.opt.scrolloff = 10
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 
-vim.cmd.colorscheme 'tokyonight-storm'
+vim.o.termguicolors = true
+vim.cmd.colorscheme 'duskfox'
 
 -- vim: ts=2 sts=2 sw=2 et
