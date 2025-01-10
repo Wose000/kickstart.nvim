@@ -1,28 +1,30 @@
 local options = {
   transparent = true,
-  styles = {
-    keywords = 'italic',
-  },
 }
 local specs = {
   duskfox = {
     syntax = {
       bracket = 'blue.light',
-      builtin0 = 'red.bright',
+      builtin0 = 'pink', -- returns
+      builtin1 = 'cyan',
       builtin2 = 'red.dim',
-      builtin3 = 'yellow',
-      preproc = 'magenta.dim',
-      operator = 'pink.bright',
-      keyword = 'magenta.bright',
-      func = 'red',
-      statement = 'red.bright',
-      type = 'cyan',
-      const = 'yellow.bright',
-      variable = 'cyan.light',
-      ident = 'pink.bright',
-      field = 'blue.bright',
+      -- commment
       conditional = 'pink',
+      const = 'yellow.bright',
+      -- dep
+      dep = 'black',
+      field = 'blue.bright',
+      func = 'red',
+      ident = 'pink.bright',
+      keyword = 'pink.light',
       number = 'yellow.light',
+      operator = 'pink.bright',
+      preproc = 'magenta.dim',
+      -- regex
+      statement = 'red.bright',
+      string = 'white',
+      type = 'black.light',
+      variable = 'cyan.light',
     },
   },
 }
@@ -33,6 +35,7 @@ return {
     priority = 1000,
     init = function()
       local shade = require 'nightfox.lib.shade'
+      -- base bright dim light
       local red = shade.new('#e358ff', '#e766f8', '#c849eb', '#eb78f3')
       local magenta = shade.new('#a347ff', '#b058f7', '#b83ce9', '#bc6af3')
       local green = shade.new('#1fff75', '#3ff57f', '#21d6a0', '#57ef87')
@@ -54,6 +57,7 @@ return {
           white = lightgreen,
           pink = purp,
           bg1 = '#0e111d',
+          fg0 = '#acfa9f',
         },
       }
       require('nightfox').setup {
