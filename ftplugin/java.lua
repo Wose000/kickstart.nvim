@@ -7,11 +7,18 @@ local workspace_dir = home .. '/.local/share/jdtls/workspace' .. project_name
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
+local java_debug_path = vim.fn.stdpath 'data' .. '/mason/packages/java-debug-adapter/'
+local java_test_path = vim.fn.stdpath 'data' .. '/mason/packages/java-test/'
+local jdtls_path = vim.fn.stdpath 'data' .. '/mason/packages/jdtls/'
+
+local bundles = {
+  vim.fn.glob(java_debug_path .. 'extension/server/com.microsoft.java.debug.plugin-*.jar', true),
+}
+vim.list_extend(bundles, vim.split(vim.fn.glob(java_test_path .. 'extension/server/*.jar', true), '\n'))
+
 local config = {
   -- The command that starts the language server
   -- See: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
-
-  capabilities = capabilities,
   cmd = {
 
     -- 💀
@@ -41,7 +48,7 @@ local config = {
     -- 💀
     -- '-configuration', '/path/to/jdtls_install_location/config_SYSTEM',
     '-configuration',
-    home .. '/.local/share/nvim/mason/packages/jdtls/config_linux',
+    jdtls_path .. 'config_linux',
     -- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^        ^^^^^^
     -- Must point to the                      Change to one of `linux`, `win` or `mac`
     -- eclipse.jdt.ls installation            Depending on your system.
@@ -66,27 +73,11 @@ local config = {
   settings = {
     java = {},
   },
-
-  -- Language server `initializationOptions`
-  -- You need to extend the `bundles` with paths to jar files
-  -- if you want to use additional eclipse.jdt.ls plugins.
-  --
-  -- See https://github.com/mfussenegger/nvim-jdtls#java-debug-installation
-  --
-  -- If you don't plan on using the debugger or other eclipse.jdt.ls plugins you can remove this
+  capabilities = capabilities,
+  --  debugger
   init_options = {
-    bundles = {},
+    bundles = bundles,
   },
-}
-
-local bundles = {
-  vim.fn.glob('/home/wose/.local/share/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar', true),
-}
--- This is the new part
-vim.list_extend(bundles, vim.split(vim.fn.glob('/home/wose/.local/share/vscode-java-test/server/*.jar', true), '\n'))
-
-config['init_options'] = {
-  bundles = bundles,
 }
 -- This starts a new client & server,
 -- or attaches to an existing client & server depending on the `root_dir`.

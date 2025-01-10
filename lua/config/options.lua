@@ -67,4 +67,8 @@ vim.opt.shiftwidth = 2
 vim.o.termguicolors = true
 vim.cmd.colorscheme 'duskfox'
 
+-- conceallevel see :help conceallevel
+-- used by obsidian.nvim
+vim.o.conceallevel = 2
+
 -- vim: ts=2 sts=2 sw=2 et
