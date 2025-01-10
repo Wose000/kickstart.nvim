@@ -78,6 +78,16 @@ local config = {
     bundles = {},
   },
 }
+
+local bundles = {
+  vim.fn.glob('/home/wose/.local/share/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar', true),
+}
+-- This is the new part
+vim.list_extend(bundles, vim.split(vim.fn.glob('/home/wose/.local/share/vscode-java-test/server/*.jar', true), '\n'))
+
+config['init_options'] = {
+  bundles = bundles,
+}
 -- This starts a new client & server,
 -- or attaches to an existing client & server depending on the `root_dir`.
 require('jdtls').start_or_attach(config)
