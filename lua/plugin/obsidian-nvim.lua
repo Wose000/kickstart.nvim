@@ -1,3 +1,22 @@
+local function get_hostname()
+  -- Execute the `hostname` command and capture the output
+  local handle = io.popen 'hostname'
+  if handle ~= nil then
+    local hostname = handle:read('*a'):gsub('%s+', '') -- Remove trailing newline
+    handle:close()
+    return hostname
+  end
+  print 'Could not find host name'
+end
+
+local function get_vault_path()
+  if get_hostname() == 'woselaptop' then
+    return '/home/wose/m/doc/note/'
+  else
+    return '/home/wose/Documents/ObsiVault'
+  end
+end
+
 return {
   'epwalsh/obsidian.nvim',
   version = '*', -- recommended, use latest release instead of latest commit
@@ -24,7 +43,7 @@ return {
     workspaces = {
       {
         name = 'personal',
-        path = '/home/wose/Documents/ObsiVault',
+        path = get_vault_path(),
       },
     },
     daily_notes = {
